@@ -1,6 +1,12 @@
 
 
-TODO short description/intro here
+**Contrastive Instrument Retrieval (CIR)**
+
+Accompanying material for the preprint: "Contrastive timbre representations for music instrument and synthesizer retrieval"
+
+Authors: Gwendal Le Vaillant, Yannick Molle
+
+2025
 
 
 # Example 1
