@@ -2,7 +2,7 @@
 
 **Contrastive Instrument Retrieval (CIR)**
 
-Accompanying material for the preprint: "Contrastive timbre representations for music instrument and synthesizer retrieval"
+Accompanying material for the preprint: "Contrastive timbre representations for musical instrument and synthesizer retrieval"
 
 Authors: Gwendal Le Vaillant, Yannick Molle
 
