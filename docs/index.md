@@ -8,7 +8,7 @@ accepted to IEEE ICASSP 2026.
 
 Authors: Gwendal Le Vaillant, Yannick Molle
 
-Code : https://github.com/gwendal-lv/CIR
+Code : [github.com/gwendal-lv/CIR](https://github.com/gwendal-lv/CIR)
 
 ![](data/embedding_retrieval.png)
 
