@@ -15,7 +15,7 @@ enabling direct querying of instrument databases using a single model for both s
 
 ## Usage
 
-Download the best checkpoint for Percussion / Bass / Synth Lead separation: [ICASSP26_Triplet-full_bs48_ckpt_final.pt](https://drive.google.com/file/d/1yHpwcLul1JvpAQO7NiBhQ15L8cmxakjs/view?usp=share_link).
+The best checkpoint for Percussion / Bass / Synth Lead separation can be downloaded: [ICASSP26_Triplet-full_bs48_ckpt_final.pt](https://drive.google.com/file/d/1yHpwcLul1JvpAQO7NiBhQ15L8cmxakjs/view?usp=share_link).
 It has been tested for NSynth and Surge sounds from these three families only.
 
 The model can be loaded with:
@@ -31,7 +31,9 @@ For usage examples, see the implementation in `AST.py`.
 
 ## Data
 
-The "small" versions of the NSynth and Surge datasets are available on Google Drive. All datasets should be extracted in the `./data/` folder.
+The "small" versions of the NSynth and Surge datasets are 
+[available on Google Drive](https://drive.google.com/file/d/1HDVu7MVcQm9EXGtR5cnmYeKo_0rprVcR/view?usp=share_link). 
+All datasets should be extracted into `./data/`.
 
 The full versions used to train models presented in the paper are unfortunately too big (hundreds of GBs) to be shared.
 The full [NSynth dataset](https://magenta.withgoogle.com/datasets/nsynth) can be downloaded and the metadata needs to be rearranged a bit.
@@ -46,7 +48,7 @@ wandb:
   team: 'YOUR_TEAM_NAME'  
 ```
 
-## Configuration
+## Configure and run
 
 Models and training parameters are defined in `configs/`. Usage:
 ```
