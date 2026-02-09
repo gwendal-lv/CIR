@@ -1,0 +1,30 @@
+
+run:
+  project: 'AST-instru-group'
+  name: 'dev00'
+
+dataset:
+  use_small_dataset:
+    train: True
+    valid: True
+    test: False
+
+model:
+  base: 'AST'
+  type: 'InstrumentGroupClassification'
+  pretrained: "MIT/ast-finetuned-audioset-12-12-0.447"
+  sr: 16000
+  num_mel_bins: 128
+  max_num_mel_frames: 1024
+
+training:
+  batch_size: 16  # FIXME back to 32 or 48 - increase LR accordingly
+  start_lr: 0.00005  # FIXME 0.0001 for bs 32
+  end_lr: 0.000005
+  num_steps: 2000
+  device: 'cuda:0'
+  criterion: "CE"
+
+validation:
+  period_in_steps: 200
+  valid_first_step: False

@@ -1,0 +1,15 @@
+
+run:
+  project: 'timbre-search-1'
+  name: 'TTB'
+
+dataset:
+  use_small_dataset:
+    train: False  # TTB Is really computationally expensive
+    valid: True
+    test: False  # maybe don't fix this
+
+model:
+  type: 'TimbreToolBox'
+  sr: 44100
+  n_workers: 8  # 4 or 8 for actual computation; 1 is OK when using cached embeddings

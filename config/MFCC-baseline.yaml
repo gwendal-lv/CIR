@@ -1,0 +1,14 @@
+run:
+  project: 'timbre-search-1'
+  name: 'MFCC40'
+
+dataset:
+  use_small_dataset:
+    train: False
+    valid: True
+    test: False
+
+model:
+  type: 'MFCC'
+  sr: 16000
+  num_mfccs: 40

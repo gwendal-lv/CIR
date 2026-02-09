@@ -1,0 +1,36 @@
+# Direct classification of instruments
+# from the training dataset only
+# (1 output logit / training instrument)
+run:
+  project: 'ICASSP26-single'
+  name: 'inst-direct-WITH-data-aug'
+
+dataset:
+  use_small_dataset:
+    train: False
+    valid: True  # Faster training process...
+    test: False
+  training_data_augmentation: True
+
+model:
+  base: 'AST'
+  type: 'InstrumentDirectClassification'
+  pretrained: "MIT/ast-finetuned-audioset-12-12-0.447"
+  sr: 16000
+  num_mel_bins: 128
+  max_num_mel_frames: 1024
+
+training:
+  batch_size: 24
+  start_lr: 0.0001
+  end_lr: 0.000001
+  scheduler: "Exp"
+  num_steps: 20000
+  warmup_ratio: 0.01  # Optional (default 0.0)
+  device: 'cuda:0'
+  num_workers: 8  # 0 for debug, 8 otherwise
+  criterion: "CE"
+
+validation:
+  period_in_steps: 1000
+  valid_first_step: False

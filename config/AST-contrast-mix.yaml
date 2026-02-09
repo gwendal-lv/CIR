@@ -1,0 +1,48 @@
+
+run:
+  project: 'ICASSP26-mix'
+  name: 'small_datasets'
+
+dataset:
+  use_small_dataset:
+    train: True  # If not small, a bit long to start (needs to mine all positives and negatives from the start....)
+    valid: True
+    test: True
+
+model:
+  base: 'AST'
+  type: 'ContrastiveMixEmbeddings'
+  pretrained: "MIT/ast-finetuned-audioset-12-12-0.447"
+  sr: 16000
+  num_mel_bins: 128
+  max_num_mel_frames: 1024
+  instrument_group_source: 'midi_instrument_group'  # 'midi_instrument_group' or 'instrument_family'
+  instrument_groups:  # Also named instrument families in the code
+    - 'Chromatic Percussion'
+    - 'Bass'
+    - 'Synth Lead'
+
+training:
+  batch_size: 24  # Use 48 with the big datasets
+  start_lr: 0.0001  # lr 0.00015 for bs 48
+  end_lr: 0.000001
+  num_steps: 20000
+  scheduler: "Exp"
+  warmup_ratio: 0.01  # Optional (default 0.0)
+  criterion: "InfoNCE"  # "triplet", "triplet-full", "InfoNCE", "InfoNCE-full" or "InfoNCE-full-not-symmetrical"
+  device: 'cuda:0'
+  num_workers: 8
+
+validation:
+  period_in_steps: 1000  # For batch size 24, 961 validation minibatches
+  valid_first_step: True
+
+# Call this 'sweep' to re-enable the hparam sweep (first items change the least often; last items change at every run)
+sweep_DISABLED:
+  training:
+    criterion:
+      - "triplet"
+      - "triplet-full"
+      - "InfoNCE"
+      - "InfoNCE-full"
+      - "InfoNCE-full-not-symmetrical"

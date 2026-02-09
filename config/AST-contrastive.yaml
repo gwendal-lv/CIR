@@ -1,0 +1,46 @@
+
+run:
+  project: 'ICASSP26-single'
+  name: 'InfoNCE'
+
+dataset:
+  use_small_dataset:
+    # If not small, a bit long to start
+    # (needs to prepare all positives and negatives from the start....)
+    train: False
+    valid: True
+    test: False
+  training_data_augmentation: True
+
+model:
+  base: 'AST'
+  type: 'ContrastiveEmbeddings'
+  pretrained: "MIT/ast-finetuned-audioset-12-12-0.447"
+  sr: 16000
+  num_mel_bins: 128
+  max_num_mel_frames: 1024
+
+training:
+  batch_size: 24
+  start_lr: 0.0001  # lr 0.00015 for bs 48
+  end_lr: 0.000001
+  scheduler: "Exp"
+  num_steps: 20000  # Full training dataset: 33339 minibatches for batch size 24
+  warmup_ratio: 0.01  # Optional (default 0.0)
+  device: 'cuda:0'
+  num_workers: 8  # 0 for debug, 8 otherwise
+  criterion: "InfoNCE"
+  hard_negatives_ratio: 0.5
+
+validation:
+  period_in_steps: 1000
+  valid_first_step: False
+
+sweep_DISABLED:  # Call this 'sweep' to re-enable the hparam sweep
+  training:
+    batch_size:
+      - 24
+      - 48
+    hard_negatives_ratio:
+      - 0.7
+      - 0.9

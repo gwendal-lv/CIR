@@ -1,0 +1,42 @@
+
+run:
+  project: 'ICASSP26-mix'
+  name: 'MultiEncoder-40k-steps'
+
+dataset:
+  use_small_dataset:
+    train: False
+    valid: False
+    test: False
+  training_data_augmentation: True
+
+model:
+  base: 'AST'
+  type: 'MultiEncoder'
+  pretrained_single: "/home/gwendal/Code/AudioModels2025/logs/ICASSP26-single/AST-instru-direct/ckpt_final.pt"
+  pretrained_multi: "MIT/ast-finetuned-audioset-12-12-0.447"
+  embeddings_size: 768
+  sr: 16000
+  num_mel_bins: 128
+  max_num_mel_frames: 1024
+  instrument_group_source: 'midi_instrument_group'  # 'midi_instrument_group' or 'instrument_family'
+  instrument_groups: # Also named instrument families in the code
+    - 'Chromatic Percussion'
+    - 'Bass'
+    - 'Synth Lead'
+
+training:
+  batch_size: 24
+  start_lr: 0.0001  # lr 0.00015 for bs 48
+  end_lr: 0.000001
+  scheduler: "Exp"
+  num_steps: 40000  # 40k steps = > 2 epochs (bs 24) TODO maybe go back to 20k steps?
+  warmup_ratio: 0.01  # Optional (default 0.0)
+  device: 'cuda:0'
+  num_workers: 8  # 0 for debug, 8 otherwise
+  criterion: "cosine"  # PIT really necessary here? Maybe not...
+
+validation:
+  period_in_steps: 1000
+  valid_first_step: False
+
