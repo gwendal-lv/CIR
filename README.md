@@ -1,8 +1,8 @@
 
 # Contrastive Instrument Retrieval
 
-Code for the paper "Contrastive timbre representations for musical instrument and synthesizer retrieval"
-([arXiv preprint](https://arxiv.org/abs/2509.13285), accepted to ICASSP 2026).
+Code for the paper "Contrastive timbre representations for musical instrument and synthesizer retrieval" 
+([arXiv preprint](https://arxiv.org/abs/2509.13285), accepted to ICASSP 2026). Audio examples are available on the [companion page](https://gwendal-lv.github.io/CIR/).
 
 ![](docs/embedding_retrieval.png) 
 
