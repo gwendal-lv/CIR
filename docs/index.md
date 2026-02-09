@@ -8,6 +8,10 @@ accepted to IEEE ICASSP 2026.
 
 Authors: Gwendal Le Vaillant, Yannick Molle
 
+Code : https://github.com/gwendal-lv/CIR
+
+![](data/embedding_retrieval.png)
+
 ## Abstract
 
 Efficiently retrieving specific instrument timbres from audio mixtures remains a challenge in digital music production. This paper introduces a contrastive learning framework for musical instrument retrieval, 
